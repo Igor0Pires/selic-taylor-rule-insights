@@ -1,0 +1,295 @@
+openapi: 3.0.2
+info:   
+  title: Documentos do Copom
+  version: "1.0"
+  description: >-
+   O Comitê de Política Monetária (Copom) é o órgão do Banco Central, formado pelo seu Presidente e diretores, que define, a cada 45 dias, a taxa básica de juros da economia – a Selic.
+  
+  
+   As reuniões normalmente ocorrem em dois dias seguidos e o calendário de reuniões de um determinado ano é divulgado até o mês de junho do ano anterior.
+  
+  
+   A reunião do Copom segue um processo que procura embasar da melhor forma possível a sua decisão. Os membros do Copom assistem a apresentações técnicas do corpo funcional do BC, que tratam da evolução e perspectivas das economias brasileira e mundial, das condições de liquidez e do comportamento dos mercados. Assim, o Comitê utiliza um amplo conjunto de informações para embasar sua decisão. Depois, a reunião é reservada para a discussão da decisão entre os membros. A decisão é tomada com base na avaliação do cenário macroeconômico e os principais riscos a ele associados. Todos os membros do Copom presentes na reunião votam e seus votos são divulgados. As decisões do Copom são tomadas visando com que a inflação medida pelo IPCA situe-se em linha com a meta definida pelo CMN.
+  
+  
+   A decisão do Copom é divulgada no mesmo dia da decisão por meio de Comunicado na internet. As Atas das reuniões do Copom são publicadas no prazo de até quatro dias úteis após a data da realização das reuniões. Normalmente, as reuniões do Copom ocorrem em terças e quartas-feiras e a ata é divulgada na terça-feira da semana seguinte, às 8:00.
+  
+   Uma vez definida a taxa Selic, o Banco Central atua diariamente por meio de operações de mercado aberto – comprando e vendendo títulos públicos federais – para manter a taxa de juros próxima ao valor definido na reunião.
+  
+  
+   A taxa de juros Selic é a referência para os demais juros da economia. Trata-se da taxa média cobrada em negociações com títulos emitidos pelo Tesouro Nacional, registradas diariamente no Sistema Especial de Liquidação e de Custódia (Selic).
+
+
+   Para que a política monetária atinja seus objetivos de maneira eficiente, o Banco Central precisa se comunicar de forma clara e transparente. Além do comunicado e da ata da reunião, o Banco Central publica, a cada trimestre, o Relatório de Inflação, que analisa a evolução recente e as perspectivas da economia, com ênfase nas perspectivas para a inflação.  
+  license:
+    url: http://www.opendefinition.org/licenses/odc-odbl
+    name: Licença Aberta para Bases de Dados (ODbL) do Open Data Commons
+  contact:
+    url: https://www.bcb.gov.br/acessoinformacao/faleconosco
+    name: Banco Central do Brasil
+servers:
+  - url: https://www.bcb.gov.br/api/servico/sitebcb/copom
+    description: Ambiente de produção
+paths:
+  /atas:
+    get:
+      summary: Lista atas do Copom
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            example: 5
+          in: query
+          name: quantidade
+          description: Quantidade de itens a serem retornados
+          required: true
+      responses:
+        "200":
+          description: Lista de atas do Copom publicadas.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Atas"
+      operationId: listaAtas
+      description: >-
+        Lista informações básicas das atas do Copom publicadas. O parâmetro 'quantidade' define o número de atas a serem listadas, em ordem decrescente de 'dataReferencia'.
+
+
+          ##### Exemplo de solicitação: [https://www.bcb.gov.br/api/servico/sitebcb/copom/atas?quantidade=5](https://www.bcb.gov.br/api/servico/sitebcb/copom/atas?quantidade=5)
+  /atas_detalhes:
+    get:
+      summary: Detalhes sobre uma ata do Copom
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            maximum: 5000
+            example: 255
+          in: query
+          name: nro_reuniao
+          description: Número da reunião
+          required: true
+      responses:
+        "200":
+          description: Informações detalhadas sobre uma ata do Copom publicada.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Ata"
+      operationId: obtemAta
+      description: >-
+        Conteúdo da ata de uma reunião do Copom.
+
+
+        ##### Exemplo de solicitação: [https://www.bcb.gov.br/api/servico/sitebcb/copom/atas_detalhes?nro_reuniao=255](https://www.bcb.gov.br/api/servico/sitebcb/copom/atas_detalhes?nro_reuniao=255)
+        
+  /comunicados:
+    parameters: []
+    get:
+      summary: Lista comunicados do Copom
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            example: 5
+          in: query
+          name: quantidade
+          description: Quantidade de itens a serem retornados
+          required: true
+      responses:
+        "200":
+          description: Lista comunidados do Copom publicados
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comunicados"
+      operationId: listaComunicados
+      description:  >-
+          Lista comunicados do Copom publicados.  O parâmetro 'quantidade' define o número de comunicados do Copom a serem listados, em ordem decrescente de 'dataReferencia'.
+          
+          
+          ##### Exemplo de solicitação: [https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=5](https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=5)
+  /comunicados_detalhes:
+    get:
+      summary: Detalhes sobre um comunicado do Copom
+      responses:
+        "200":
+          description: Detalhes sobre um comunicado do Copom publicado.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comunicado"
+      operationId: obtemComunicado
+      parameters:
+        - schema:
+            type: integer
+            minimum: 1
+            maximum: 5000
+            example: 255
+          in: query
+          name: nro_reuniao
+          description: Número da reunião
+          required: true
+      description: >-
+        Conteúdo de um comunicado do Copom.
+
+
+        ##### Exemplo de solicitação: [https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados_detalhes?nro_reuniao=255](https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados_detalhes?nro_reuniao=255)
+
+components:
+  schemas:
+    Atas:
+      type: object
+      additionalProperties: false
+      properties:
+        conteudo:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              nroReuniao:
+                type: integer
+                title: Número da Reunião
+                description: Número da reunião do Copom
+                example: 255
+              dataReferencia:
+                type: string
+                title: Data de referência da reunião do Copom
+                format: date
+                description: "Data do último dia da reunião do Copom, com formato conforme especificação RFC-3339
+                  (ex: 2023-06-21)"
+                example: "2023-06-21"
+              dataPublicacao:
+                type: string
+                title: Data de publicação
+                format: date
+                description: "Data de publicação da ata, com formato conforme especificação RFC-3339
+                  (ex: 2023-06-27)"
+                example: "2023-06-27"
+              titulo:
+                type: string
+                title: Título
+                description: Título da publicação
+                example: 255ª Reunião - 20-21 junho, 2023
+            title: Conteúdo
+      required:
+        - conteudo
+      title: Atas
+    Ata:
+      description: ""
+      type: object
+      additionalProperties: false
+      properties:
+        conteudo:
+          type: array
+          maxItems: 1
+          items:
+              type: object
+              properties:
+                nroReuniao:
+                  type: integer
+                  title: Número da Reunião
+                  description: Número da reunião do Copom
+                  example: 255
+                dataReferencia:
+                  type: string
+                  title: Data de referência da reunião do Copom
+                  format: date
+                  description: "Data do último dia da reunião do Copom, com formato conforme especificação RFC-3339
+                  (ex: 2023-06-21)"
+                  example: "2023-06-21"
+                dataPublicacao:
+                  type: string
+                  title: Data de publicação
+                  format: date
+                  description: "Data de publicação da ata, com formato conforme especificação RFC-3339
+                  (ex: 2023-06-27)"
+                  example: "2023-06-27"                  
+                titulo:
+                  type: string
+                  title: Título
+                  description: Título da publicação
+                  example: 255ª Reunião - 20-21 junho, 2023
+                urlPdfAta:
+                  type: string
+                  title: Url
+                  description: Caminho completo para acesso ao arquivo PDF do relatório. Disponível só a partir da reunião de número 200.
+                  example: https://www.bcb.gov.br/content/copom/atascopom/Copom255-not20230621255.pdf
+                textoAta:
+                  type: string
+                  title: Relatório 
+                  description: Conteúdo da ata, em formato texto com tags html
+                  example: <div id=\"atacompleta\"><div id=\"ataconteudo\"><h3 class=\"secao\">A) Atualização da conjuntura econômica e do cenário do Copom<sup>1</sup></h3><p class=\"paragrafo\">1. O ambiente externo se mantém adverso. Os episódios envolvendo bancos no exterior têm elevado a incerteza, mas com contágio limitado sobre as condições financeiras até o momento, requerendo contínuo monitoramento. O impacto desses ...
+      required:
+        - conteudo
+      title: Ata
+    Comunicados:
+      type: object
+      additionalProperties: false
+      properties:
+        conteudo:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              dataReferencia:
+                type: string
+                title: Data de referência da publicação
+                format: date
+                description: "Data de referência da publicação, com formato conforme especificação RFC-3339
+                  (ex: 2021-09-03)"
+                example: "2021-09-03"
+              nroReuniao:
+                type: integer
+                title: Número da Reunião
+                description: Número da reunião do Copom
+                example: 255
+              titulo:
+                type: string
+                title: Título
+                description: Título do comunicado
+                example: 255ª reunião - Copom mantém a taxa Selic em 13,75% a.a.
+            title: Conteúdo
+      required:
+        - conteudo
+      title: Comunicados
+    Comunicado:
+      description: ""
+      type: object
+      additionalProperties: false
+      properties:
+        conteudo:
+          type: array
+          maxItems: 1
+          items:
+              type: object
+              properties:
+                  nro_reuniao:
+                    type: integer
+                    title: Número da Reunião
+                    description: Número da reunião do Copom
+                    example: 255
+                  dataReferencia:
+                    type: string
+                    title: Data de referência da publicação
+                    format: date
+                    description: "Data de referência da publicação, com formato conforme especificação RFC-3339
+                      (ex: 2023-06-21)"
+                    example: "2023-06-21"
+                  titulo:
+                    type: string
+                    title: Título
+                    description: Título do comunicado
+                    example: Copom mantém a taxa Selic em 13,75% a.a.
+                  textoComunicado:
+                    type: string
+                    title:  Conteúdo do comunicado
+                    description: Conteúdo do comunicado, em formato texto com tags html
+                    example: <p style=\"text-align&#58;justify;\">Em sua 252ª reunião, o Comitê de Política Monetária (Copom) decidiu manter a taxa Selic ...
+      required:
+        - conteudo
+      title: Comunicado        

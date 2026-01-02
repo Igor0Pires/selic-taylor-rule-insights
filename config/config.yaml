@@ -1,0 +1,52 @@
+
+paths: 
+  raw_data: data/raw/
+  processed_data: data/processed/
+  figures: figures/
+
+files_patterns:
+  # Patterns for specific datasets
+  focus_expected_inflation: focus_expected_inflation*.csv # Wildcard to match different timeframes
+  bcb_expected_inflation: bc_expected_inflation-2002-2025.csv
+  selic_target_rate: selic_target-1999-2025.csv
+  exchange_rate: exchange_rate-1999_2025.csv
+  output_proxy: pim_pf-2002_2025.csv
+  inflation_target: inflation_target-1999-2025.csv
+  inflation_data: ipca_12m-1980-2025.csv
+
+ingestion:
+  bcb_endpoint_atas: https://www.bcb.gov.br/api/servico/sitebcb/copom/atas?quantidade=500 # Endpoint for fetching meeting dates
+  
+
+processing:
+  save_files: true # Whether to save processed files
+  hp_filter_lambda: 129600 # Lambda parameter for Hodrick-Prescott filter ()
+
+
+estimation:
+  lag: 1 # Lag parameter for Taylor Rule estimation
+  year_ranges:
+    # Year ranges for estimation, with optional specific month ranges for finer analysis
+    - start: 2002
+      end: 2003
+      dummy_range: [10-2002, 03-2003]
+
+    - start: 2005
+      end: 2007
+      dummy_range: null
+    
+    - start: 2008
+      end: 2009
+      dummy_range: [09-2008, 01-2009]
+
+    - start: 2011
+      end: 2016
+      dummy_range: [01-2015, 12-2015]
+
+    - start: 2020
+      end: 2025
+      dummy_range: [03-2020, 12-2020]
+
+visualization:
+  plot_size: [12, 8] 
+  save_plots: true 

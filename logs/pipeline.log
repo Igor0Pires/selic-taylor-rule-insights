@@ -1,0 +1,600 @@
+2026-01-02 14:35:33,895 - src.pipeline - INFO - Configuration loaded from ./config/config.yaml
+2026-01-02 14:35:33,896 - src.utils - INFO - Starting run...
+2026-01-02 14:35:33,898 - src.pipeline - INFO - ==================================================
+2026-01-02 14:35:33,898 - src.pipeline - INFO - Starting Taylor Project Pipeline
+2026-01-02 14:35:33,898 - src.pipeline - INFO - ==================================================
+2026-01-02 14:35:33,898 - src.utils - INFO - Starting fetch_focus_expectations...
+2026-01-02 14:35:35,448 - src.pipeline - INFO - Fetched 255 Copom meetings
+2026-01-02 14:35:35,516 - src.pipeline - INFO - Loaded Focus data with shape (6018, 5)
+2026-01-02 14:35:35,577 - src.pipeline - INFO - Filtered to 208 records on Copom eve dates
+2026-01-02 14:35:35,578 - src.utils - INFO - Completed fetch_focus_expectations in 1.68s
+2026-01-02 14:35:35,579 - src.utils - INFO - Starting fetch_bcb_expectations...
+2026-01-02 14:35:35,587 - src.pipeline - INFO - Loaded BCB data with shape (96, 2)
+2026-01-02 14:35:35,626 - src.utils - INFO - Completed fetch_bcb_expectations in 0.05s
+2026-01-02 14:35:35,627 - src.utils - INFO - Starting fetch_selic_rate...
+2026-01-02 14:35:35,650 - src.pipeline - INFO - Loaded Selic data with shape (9798, 2)
+2026-01-02 14:35:35,714 - src.utils - INFO - Completed fetch_selic_rate in 0.09s
+2026-01-02 14:35:35,715 - src.utils - INFO - Starting fetch_exchange_rate...
+2026-01-02 14:35:35,731 - src.pipeline - INFO - Loaded exchange rate data with shape (6780, 2)
+2026-01-02 14:35:35,770 - src.utils - INFO - Completed fetch_exchange_rate in 0.05s
+2026-01-02 14:35:35,770 - src.utils - INFO - Starting fetch_output_gap...
+2026-01-02 14:35:35,781 - src.pipeline - INFO - Loaded output data with shape (288, 2)
+2026-01-02 14:35:36,478 - src.utils - INFO - Completed fetch_output_gap in 0.71s
+2026-01-02 14:35:36,478 - src.utils - INFO - Starting fetch_inflation_target...
+2026-01-02 14:35:36,485 - src.pipeline - INFO - Loaded inflation target data with shape (27, 3)
+2026-01-02 14:35:36,511 - src.utils - INFO - Completed fetch_inflation_target in 0.03s
+2026-01-02 14:35:36,527 - src.pipeline - INFO - Loaded inflation data with shape (541, 2)
+2026-01-02 14:35:36,536 - src.pipeline - INFO - Merging datasets...
+2026-01-02 14:35:36,586 - src.pipeline - INFO - Merged dataset shape: (208, 17)
+2026-01-02 14:35:36,587 - src.pipeline - INFO - Calculating deviation from inflation target...
+2026-01-02 14:35:36,604 - src.pipeline - INFO - ==================================================
+2026-01-02 14:35:36,605 - src.pipeline - INFO - Pipeline completed successfully!
+2026-01-02 14:35:36,605 - src.pipeline - INFO - ==================================================
+2026-01-02 14:35:36,606 - src.utils - INFO - Shape: (208, 22)
+2026-01-02 14:35:36,606 - src.utils - INFO - Columns: ['Date', 'focus_expected_inflation', 'Infl. 12 m suav.', 'Infl. meses 13-24', 'Infl. meses 13-24 suav.', 'bcb_expected_inflation', 'selic_target', 'exchange_rate', 'exchange_rate_var', 'output', 'output_potential', 'output_gap', 'inflation_target', 'interval_size', 'upper_limit', 'lower_limit', 'inflation_12m', 'ano', 'mes', 'inflation_target_next', 'bcb_inflation_deviation', 'focus_inflation_deviation']
+2026-01-02 14:35:36,613 - src.utils - INFO - Memory usage: 0.04 MB
+2026-01-02 14:35:36,654 - src.utils - INFO - 
+First few rows:
+      Date  focus_expected_inflation  Infl. 12 m suav.  ...  inflation_target_next  bcb_inflation_deviation  focus_inflation_deviation
+0  2002-01                      4.83              4.84  ...                    8.5                      NaN                   0.913333
+1  2002-02                      4.63              4.62  ...                    8.5                      NaN                   0.296667
+2  2002-03                      4.76              4.76  ...                    8.5                -1.150000                   0.010000
+3  2002-04                      4.92              4.85  ...                    8.5                -1.433333                  -0.246667
+4  2002-05                      4.44              4.42  ...                    8.5                -1.716667                  -1.143333
+
+[5 rows x 22 columns]
+2026-01-02 14:35:36,654 - src.utils - INFO - Completed run in 2.76s
+2026-01-02 14:35:36,655 - __main__ - INFO - Pipeline execution successful!
+2026-01-02 14:35:36,655 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,328 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,328 - src.utils - INFO - Completed estimate_taylor_rule in 1.67s
+2026-01-02 14:35:38,329 - src.pipeline - INFO - Taylor Rule estimation results for source 'market' and year range '(2002, 2003)':
+2026-01-02 14:35:38,329 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,404 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,405 - src.utils - INFO - Completed estimate_taylor_rule in 0.08s
+2026-01-02 14:35:38,405 - src.pipeline - INFO - Taylor Rule estimation results for source 'bc' and year range '(2002, 2003)':
+2026-01-02 14:35:38,406 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,455 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,456 - src.utils - INFO - Completed estimate_taylor_rule in 0.05s
+2026-01-02 14:35:38,458 - src.pipeline - INFO - Taylor Rule estimation results for source 'market' and year range '(2005, 2007)':
+2026-01-02 14:35:38,459 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,503 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,504 - src.utils - INFO - Completed estimate_taylor_rule in 0.04s
+2026-01-02 14:35:38,504 - src.pipeline - INFO - Taylor Rule estimation results for source 'bc' and year range '(2005, 2007)':
+2026-01-02 14:35:38,505 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,559 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,560 - src.utils - INFO - Completed estimate_taylor_rule in 0.06s
+2026-01-02 14:35:38,561 - src.pipeline - INFO - Taylor Rule estimation results for source 'market' and year range '(2008, 2009)':
+2026-01-02 14:35:38,561 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,618 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,619 - src.utils - INFO - Completed estimate_taylor_rule in 0.06s
+2026-01-02 14:35:38,619 - src.pipeline - INFO - Taylor Rule estimation results for source 'bc' and year range '(2008, 2009)':
+2026-01-02 14:35:38,620 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,679 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,680 - src.utils - INFO - Completed estimate_taylor_rule in 0.06s
+2026-01-02 14:35:38,680 - src.pipeline - INFO - Taylor Rule estimation results for source 'market' and year range '(2011, 2016)':
+2026-01-02 14:35:38,681 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,733 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,733 - src.utils - INFO - Completed estimate_taylor_rule in 0.05s
+2026-01-02 14:35:38,734 - src.pipeline - INFO - Taylor Rule estimation results for source 'bc' and year range '(2011, 2016)':
+2026-01-02 14:35:38,734 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,795 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,795 - src.utils - INFO - Completed estimate_taylor_rule in 0.06s
+2026-01-02 14:35:38,796 - src.pipeline - INFO - Taylor Rule estimation results for source 'market' and year range '(2020, 2025)':
+2026-01-02 14:35:38,796 - src.utils - INFO - Starting estimate_taylor_rule...
+2026-01-02 14:35:38,860 - src.pipeline - INFO - Taylor Rule estimation completed.
+2026-01-02 14:35:38,861 - src.utils - INFO - Completed estimate_taylor_rule in 0.06s
+2026-01-02 14:35:38,862 - src.pipeline - INFO - Taylor Rule estimation results for source 'bc' and year range '(2020, 2025)':
+2026-01-02 14:35:38,863 - src.pipeline - INFO - Taylor Rule estimation results obtained.
+2026-01-02 14:35:38,864 - __main__ - INFO - Estimation execution successful!
+2026-01-02 14:35:38,918 - src.pipeline - INFO - Analysis summary for ('market', (2002, 2003)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 0.9965
+        Coefficient on Inflation Deviation (alpha2): 84.7879
+        Coefficient on Output Gap (alpha3): 95.8950
+        Coefficient on Exchange Rate Variation (alpha4): -2.5562
+        
+        LM Test Statistic for Autocorrelation: 0.5270
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.2953      0.197      1.495      0.135       0.908       1.682
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.947
+Model:                            OLS   Adj. R-squared:                  0.931
+Method:                 Least Squares   F-statistic:                     381.2
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           7.94e-17
+Time:                        14:35:38   Log-Likelihood:                -27.959
+No. Observations:                  23   AIC:                             67.92
+Df Residuals:                      17   BIC:                             74.73
+Df Model:                           5                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                -0.0582      2.571     -0.023      0.982      -5.097       4.981
+selic_target_lag          0.9965      0.118      8.455      0.000       0.765       1.227
+inf_dev                   0.2988      0.230      1.300      0.194      -0.152       0.749
+output_gap_lag            0.3379      0.139      2.430      0.015       0.065       0.610
+exchange_rate_var_lag    -0.0090      0.028     -0.318      0.750      -0.064       0.046
+dummy_var:inf_dev         0.2373      0.279      0.850      0.396      -0.310       0.785
+==============================================================================
+Omnibus:                       22.693   Durbin-Watson:                   1.680
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               33.899
+Skew:                           1.922   Prob(JB):                     4.35e-08
+Kurtosis:                       7.539   Cond. No.                         232.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:38,944 - src.pipeline - INFO - Analysis summary for ('bc', (2002, 2003)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 1.0208
+        Coefficient on Inflation Deviation (alpha2): -44.3432
+        Coefficient on Output Gap (alpha3): -11.2560
+        Coefficient on Exchange Rate Variation (alpha4): 0.9873
+        
+        LM Test Statistic for Autocorrelation: 0.3998
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.9415      0.184      5.126      0.000       1.581       2.301
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.953
+Model:                            OLS   Adj. R-squared:                  0.938
+Method:                 Least Squares   F-statistic:                     222.9
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           3.34e-14
+Time:                        14:35:38   Log-Likelihood:                -25.602
+No. Observations:                  22   AIC:                             63.20
+Df Residuals:                      16   BIC:                             69.75
+Df Model:                           5                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 0.9198      3.415      0.269      0.788      -5.774       7.614
+selic_target_lag          1.0208      0.140      7.289      0.000       0.746       1.295
+inf_dev                   0.9207      0.293      3.144      0.002       0.347       1.495
+output_gap_lag            0.2337      0.164      1.428      0.153      -0.087       0.554
+exchange_rate_var_lag    -0.0205      0.033     -0.617      0.537      -0.086       0.045
+dummy_var:inf_dev        -0.7289      0.696     -1.047      0.295      -2.094       0.636
+==============================================================================
+Omnibus:                        3.033   Durbin-Watson:                   1.395
+Prob(Omnibus):                  0.219   Jarque-Bera (JB):                1.801
+Skew:                           0.694   Prob(JB):                        0.406
+Kurtosis:                       3.196   Cond. No.                         242.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:38,957 - src.pipeline - INFO - Analysis summary for ('market', (2005, 2007)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 0.9113
+        Coefficient on Inflation Deviation (alpha2): 8.1782
+        Coefficient on Output Gap (alpha3): 0.4209
+        Coefficient on Exchange Rate Variation (alpha4): -0.4852
+        
+        LM Test Statistic for Autocorrelation: 0.9199
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.6370      0.076      8.406      0.000       1.488       1.786
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.995
+Model:                            OLS   Adj. R-squared:                  0.994
+Method:                 Least Squares   F-statistic:                     2207.
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           2.32e-29
+Time:                        14:35:38   Log-Likelihood:                 2.6917
+No. Observations:                  28   AIC:                             4.617
+Df Residuals:                      23   BIC:                             11.28
+Df Model:                           4                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 1.1380      0.340      3.345      0.001       0.471       1.805
+selic_target_lag          0.9113      0.020     44.733      0.000       0.871       0.951
+inf_dev                   0.7257      0.091      7.981      0.000       0.548       0.904
+output_gap_lag            0.0374      0.016      2.292      0.022       0.005       0.069
+exchange_rate_var_lag    -0.0431      0.023     -1.905      0.057      -0.087       0.001
+==============================================================================
+Omnibus:                        0.165   Durbin-Watson:                   1.680
+Prob(Omnibus):                  0.921   Jarque-Bera (JB):                0.091
+Skew:                          -0.112   Prob(JB):                        0.955
+Kurtosis:                       2.831   Cond. No.                         183.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:38,971 - src.pipeline - INFO - Analysis summary for ('bc', (2005, 2007)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 1.0128
+        Coefficient on Inflation Deviation (alpha2): -44.6948
+        Coefficient on Output Gap (alpha3): -1.4010
+        Coefficient on Exchange Rate Variation (alpha4): 2.0677
+        
+        LM Test Statistic for Autocorrelation: 0.5090
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.5871      0.067      8.710      0.000       1.455       1.719
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.995
+Model:                            OLS   Adj. R-squared:                  0.995
+Method:                 Least Squares   F-statistic:                     4508.
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           6.39e-33
+Time:                        14:35:38   Log-Likelihood:                 3.5302
+No. Observations:                  28   AIC:                             2.940
+Df Residuals:                      23   BIC:                             9.601
+Df Model:                           4                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                -0.2364      0.271     -0.871      0.384      -0.768       0.295
+selic_target_lag          1.0128      0.013     80.080      0.000       0.988       1.038
+inf_dev                   0.5743      0.075      7.618      0.000       0.427       0.722
+output_gap_lag            0.0180      0.020      0.881      0.378      -0.022       0.058
+exchange_rate_var_lag    -0.0266      0.022     -1.181      0.237      -0.071       0.018
+==============================================================================
+Omnibus:                        3.772   Durbin-Watson:                   1.867
+Prob(Omnibus):                  0.152   Jarque-Bera (JB):                2.270
+Skew:                          -0.411   Prob(JB):                        0.321
+Kurtosis:                       4.127   Cond. No.                         115.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:38,987 - src.pipeline - INFO - Analysis summary for ('market', (2008, 2009)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 0.8228
+        Coefficient on Inflation Deviation (alpha2): 3.3925
+        Coefficient on Output Gap (alpha3): 0.3413
+        Coefficient on Exchange Rate Variation (alpha4): -0.0267
+        
+        LM Test Statistic for Autocorrelation: 0.0173
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.4239      0.094      4.500      0.000       1.239       1.609
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.986
+Model:                            OLS   Adj. R-squared:                  0.979
+Method:                 Least Squares   F-statistic:                     780.6
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           1.27e-12
+Time:                        14:35:38   Log-Likelihood:                 1.4914
+No. Observations:                  16   AIC:                             9.017
+Df Residuals:                      10   BIC:                             13.65
+Df Model:                           5                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 1.9210      0.423      4.538      0.000       1.091       2.751
+selic_target_lag          0.8228      0.039     20.910      0.000       0.746       0.900
+inf_dev                   0.6011      0.110      5.476      0.000       0.386       0.816
+output_gap_lag            0.0605      0.006      9.545      0.000       0.048       0.073
+exchange_rate_var_lag    -0.0047      0.013     -0.371      0.711      -0.030       0.020
+dummy_var:inf_dev         0.0108      0.147      0.073      0.942      -0.277       0.299
+==============================================================================
+Omnibus:                        1.178   Durbin-Watson:                   2.463
+Prob(Omnibus):                  0.555   Jarque-Bera (JB):                0.994
+Skew:                           0.427   Prob(JB):                        0.608
+Kurtosis:                       2.126   Cond. No.                         147.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:39,005 - src.pipeline - INFO - Analysis summary for ('bc', (2008, 2009)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 0.8531
+        Coefficient on Inflation Deviation (alpha2): 4.1580
+        Coefficient on Output Gap (alpha3): 0.4034
+        Coefficient on Exchange Rate Variation (alpha4): -0.0322
+        
+        LM Test Statistic for Autocorrelation: 0.1009
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.4640      0.254      1.824      0.068       0.965       1.963
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.986
+Model:                            OLS   Adj. R-squared:                  0.979
+Method:                 Least Squares   F-statistic:                     834.2
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           9.15e-13
+Time:                        14:35:38   Log-Likelihood:                 1.7125
+No. Observations:                  16   AIC:                             8.575
+Df Residuals:                      10   BIC:                             13.21
+Df Model:                           5                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 1.6914      0.603      2.803      0.005       0.509       2.874
+selic_target_lag          0.8531      0.053     16.045      0.000       0.749       0.957
+inf_dev                   0.6109      0.277      2.203      0.028       0.067       1.154
+output_gap_lag            0.0593      0.006      9.161      0.000       0.047       0.072
+exchange_rate_var_lag    -0.0047      0.010     -0.469      0.639      -0.025       0.015
+dummy_var:inf_dev         0.2859      0.305      0.938      0.348      -0.311       0.883
+==============================================================================
+Omnibus:                        1.707   Durbin-Watson:                   1.905
+Prob(Omnibus):                  0.426   Jarque-Bera (JB):                1.106
+Skew:                          -0.357   Prob(JB):                        0.575
+Kurtosis:                       1.928   Cond. No.                         143.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:39,024 - src.pipeline - INFO - Analysis summary for ('market', (2011, 2016)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 1.0414
+        Coefficient on Inflation Deviation (alpha2): -4.7700
+        Coefficient on Output Gap (alpha3): -1.6549
+        Coefficient on Exchange Rate Variation (alpha4): 0.3446
+        
+        LM Test Statistic for Autocorrelation: 0.0052
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.2386      0.109      2.182      0.029       1.024       1.453
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.983
+Model:                            OLS   Adj. R-squared:                  0.981
+Method:                 Least Squares   F-statistic:                     382.9
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           7.09e-34
+Time:                        14:35:39   Log-Likelihood:                -11.424
+No. Observations:                  48   AIC:                             34.85
+Df Residuals:                      42   BIC:                             46.08
+Df Model:                           5                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                -0.7175      0.404     -1.774      0.076      -1.510       0.075
+selic_target_lag          1.0414      0.040     26.168      0.000       0.963       1.119
+inf_dev                   0.1973      0.123      1.602      0.109      -0.044       0.439
+output_gap_lag            0.0684      0.017      3.947      0.000       0.034       0.102
+exchange_rate_var_lag    -0.0142      0.012     -1.196      0.232      -0.038       0.009
+dummy_var:inf_dev         0.0996      0.060      1.650      0.099      -0.019       0.218
+==============================================================================
+Omnibus:                       18.923   Durbin-Watson:                   1.144
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               25.416
+Skew:                          -1.346   Prob(JB):                     3.03e-06
+Kurtosis:                       5.336   Cond. No.                         81.0
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:39,049 - src.pipeline - INFO - Analysis summary for ('bc', (2011, 2016)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 1.0404
+        Coefficient on Inflation Deviation (alpha2): -6.3159
+        Coefficient on Output Gap (alpha3): -1.5140
+        Coefficient on Exchange Rate Variation (alpha4): 0.4452
+        
+        LM Test Statistic for Autocorrelation: 0.0147
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.2955      0.134      2.208      0.027       1.033       1.558
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.984
+Model:                            OLS   Adj. R-squared:                  0.982
+Method:                 Least Squares   F-statistic:                     569.1
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           2.02e-37
+Time:                        14:35:39   Log-Likelihood:                -10.025
+No. Observations:                  48   AIC:                             32.05
+Df Residuals:                      42   BIC:                             43.28
+Df Model:                           5                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                -0.6398      0.335     -1.908      0.056      -1.297       0.018
+selic_target_lag          1.0404      0.033     31.516      0.000       0.976       1.105
+inf_dev                   0.2551      0.144      1.768      0.077      -0.028       0.538
+output_gap_lag            0.0611      0.017      3.529      0.000       0.027       0.095
+exchange_rate_var_lag    -0.0180      0.012     -1.517      0.129      -0.041       0.005
+dummy_var:inf_dev         0.1567      0.100      1.563      0.118      -0.040       0.353
+==============================================================================
+Omnibus:                       13.891   Durbin-Watson:                   1.199
+Prob(Omnibus):                  0.001   Jarque-Bera (JB):               14.910
+Skew:                          -1.176   Prob(JB):                     0.000578
+Kurtosis:                       4.386   Cond. No.                         81.3
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:39,067 - src.pipeline - INFO - Analysis summary for ('market', (2020, 2025)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 0.8746
+        Coefficient on Inflation Deviation (alpha2): 5.7422
+        Coefficient on Output Gap (alpha3): 0.1722
+        Coefficient on Exchange Rate Variation (alpha4): -0.0969
+        
+        LM Test Statistic for Autocorrelation: 0.9316
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.5948      0.108      5.503      0.000       1.383       1.807
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.996
+Model:                            OLS   Adj. R-squared:                  0.995
+Method:                 Least Squares   F-statistic:                     2944.
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           1.25e-32
+Time:                        14:35:39   Log-Likelihood:                -7.6200
+No. Observations:                  30   AIC:                             27.24
+Df Residuals:                      24   BIC:                             35.65
+Df Model:                           5                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 0.4676      0.152      3.070      0.002       0.169       0.766
+selic_target_lag          0.8746      0.020     43.741      0.000       0.835       0.914
+inf_dev                   0.7203      0.121      5.954      0.000       0.483       0.957
+output_gap_lag            0.0216      0.008      2.632      0.008       0.006       0.038
+exchange_rate_var_lag    -0.0122      0.007     -1.800      0.072      -0.025       0.001
+dummy_var:inf_dev        -0.3618      0.212     -1.704      0.088      -0.778       0.054
+==============================================================================
+Omnibus:                        0.882   Durbin-Watson:                   1.570
+Prob(Omnibus):                  0.644   Jarque-Bera (JB):                0.878
+Skew:                           0.358   Prob(JB):                        0.645
+Kurtosis:                       2.563   Cond. No.                         48.6
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:39,085 - src.pipeline - INFO - Analysis summary for ('bc', (2020, 2025)):
+
+        Taylor Rule Estimation Results:
+        -------------------------------
+        Coefficient on Lagged Selic Rate (alpha1): 0.8599
+        Coefficient on Inflation Deviation (alpha2): 4.8916
+        Coefficient on Output Gap (alpha3): 0.2231
+        Coefficient on Exchange Rate Variation (alpha4): -0.2290
+        
+        LM Test Statistic for Autocorrelation: 0.0159
+        
+        T-Test Statistic for alpha2 > 1:                              Test for Constraints                             
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+c0             1.5451      0.153      3.569      0.000       1.246       1.845
+==============================================================================
+
+        Full Regression Summary:
+                                    OLS Regression Results                            
+==============================================================================
+Dep. Variable:           selic_target   R-squared:                       0.992
+Model:                            OLS   Adj. R-squared:                  0.991
+Method:                 Least Squares   F-statistic:                     4724.
+Date:                Fri, 02 Jan 2026   Prob (F-statistic):           4.33e-35
+Time:                        14:35:39   Log-Likelihood:                -17.098
+No. Observations:                  30   AIC:                             46.20
+Df Residuals:                      24   BIC:                             54.60
+Df Model:                           5                                         
+Covariance Type:                  HAC                                         
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 1.0079      0.376      2.680      0.007       0.271       1.745
+selic_target_lag          0.8599      0.036     23.927      0.000       0.789       0.930
+inf_dev                   0.6852      0.175      3.923      0.000       0.343       1.028
+output_gap_lag            0.0312      0.015      2.130      0.033       0.002       0.060
+exchange_rate_var_lag    -0.0321      0.011     -2.821      0.005      -0.054      -0.010
+dummy_var:inf_dev         0.4312      0.425      1.015      0.310      -0.402       1.264
+==============================================================================
+Omnibus:                        1.053   Durbin-Watson:                   0.722
+Prob(Omnibus):                  0.591   Jarque-Bera (JB):                0.437
+Skew:                           0.286   Prob(JB):                        0.804
+Kurtosis:                       3.152   Cond. No.                         48.6
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 4 lags and without small sample correction
+
+
+        
+2026-01-02 14:35:39,086 - __main__ - INFO - Analysis execution successful!
+2026-01-02 14:35:52,969 - src.pipeline - INFO - Inflation plot generated.
+2026-01-02 14:35:52,971 - __main__ - INFO - Visualization execution successful!
